@@ -1,0 +1,53 @@
+/* TODO */
+// Create a new component called "About" in the "pages" folder
+// - contains experience, skills, and projects
+// - contains education
+
+// Create a new component called "Projects" in the "pages/About" folder
+// - contains project list, each project has a name, description, screenshots, technologies, and links to github and running project
+
+// Create a new component called "Contact" in the "pages" folder
+// - contains a form with title, from, email, body that emails to bboayes@gmail.com
+// - contains email, linkedin
+
+// Create a new component called "Blog" in the "pages" folder
+// - useEffect to call GET allPosts
+// - Create Array<Post> from GET call
+// - PostList contains Array<Post>
+// - Each post listed has a Title, Date
+
+// Create a new component called "PostList" in the "pages/Blog" folder
+// - Takes an Array<Post> as a prop and maps data into a list of PostListItems with Post as a prop
+
+// Create a new component called "PostListItem" in the "pages/Blog" folder
+// - Takes a Post as a prop and displays Title, date, and hard-coded author: Barry B.
+// - onClick will navigate the blog into the Post component
+
+// Create a new component called "Post" in the "pages/Blog" folder
+// - When PostListItem is clicked try to view as a Modal
+
+// Create a new component called "Login" in the "pages/Admin" folder
+// - find out how to navigate a secret page via konami code
+// - login with password
+// - if correct navigate to Admin page
+// - else modal to view don't stop believing video
+
+// Create a new component called "Admin" in the "pages" folder
+// - Admin page should have full control of the data of the website
+// - Home page data can be changed
+//  - be able to change homepage welcome paragraph
+//  - implement PUT and GET requests for welcome paragraph
+// - About page data can be changed
+//  - be able to add, edit, read, delete skills (Skill: {name, icon})
+//  - be able to add, edit, read, delete projects (Project: {name, description, screenshots, technologies, githubLink, projectLink})
+//  - be able to add, edit, read, delete job experience (Job: {company, title, startDate(MM/YY), endDate(MM/YY), technologies[string], description[string]})
+// - Blog page data can be change
+//  - be able to add, edit, read, delete blog posts (Post: {title, body})
+// Create a new component called "Dashboard" in the "pages/Admin" folder
+// Create a new component called "PostForm" in the "pages/Blog" folder
+// Create a new component called "PostDelete" in the "pages/Blog" folder
+// Create a new component called "PostCreate" in the "pages/Blog" folder
+// Create a new component called "PostUpdate" in the "pages/Blog" folder
+
+CLIENT SIDE
+SERVER SIDE

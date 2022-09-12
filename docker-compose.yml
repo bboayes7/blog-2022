@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    environment:
+      - REACT_APP_API_URL=http://server:5000
+      - WATCHPACK_POLLING=true
+    networks:
+      - blog-network
+    volumes:
+      - ./client/src:/client/app/src
+      - ./client/public:/client/app/public
+      - /client/app/node_modules
+    stdin_open: true
+    tty: true
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment: 
+      - MONGODB_CONNSTRING=mongodb://barry:123456@mongodb
+      - PORT=5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    networks:
+      - blog-network
+    volumes:
+      - ./server/:/server/app/
+      - /server/app/node_modules
+    command: /server/app/node_modules/.bin/nodemon -L src/server.js
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=barry
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+      - MONGO_INITDB_DATABASE=blog
+    ports:
+      - "27017:27017"
+    networks:
+      - blog-network
+    volumes:
+      - ./data:/data/db
+networks:
+  blog-network:
+    driver: bridge
+volumes:
+  mongodb-data:
+    driver: local
