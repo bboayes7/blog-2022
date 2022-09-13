@@ -51,3 +51,38 @@
 
 CLIENT SIDE
 SERVER SIDE
+
+
+
+
+
+
+
+9.13.22 9:49AM
+---------------------------------------------------------------------------------
+- Complete fileupload dropzone
+  CLIENT SIDE
+    - FileUpload.tsx
+    	- implement react-dropzone into fileupload component
+	- implement axios.post http://localhost:5000/api/file
+	  - formdata
+  SERVER SIDE
+    - fileController.js	
+	- implement post fileupload controller
+	- use multer.js
+    - fileRouter.js
+---------------------------------------------------------------------------------
+- Complete fileupload get filelist
+- Complete fileupload download file from filelist 
+- Complete fileupload delete file from filelist
+- Once complete put all fileupload components in one folder in /Admin/file
+- Create File component that contains all fileupload 
+  components and add it to Admin component
+
+
+
+
+
+
+
+
