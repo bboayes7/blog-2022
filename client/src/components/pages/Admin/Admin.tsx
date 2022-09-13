@@ -1,5 +1,4 @@
-import FileUpload from "./FileUpload"
-import FileList from "./FileList"
+import File from './File/File'
 
 const Admin = () => {
   return (
@@ -7,11 +6,7 @@ const Admin = () => {
       <h1>Welcome to the Admin Page, Barry</h1>
       <div className="file-upload">
         <h3>Upload your resume here:</h3>
-        <FileUpload />
-      </div>
-      <div className="files">
-        <h3>Files</h3>
-        <FileList />
+        <File />
       </div>
     </div>
   )
