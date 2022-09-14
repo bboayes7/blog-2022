@@ -1,4 +1,5 @@
 import EditFile from './File/EditFile'
+import EditAbout from './About/EditAbout'
 
 const Admin = () => {
   return (
@@ -6,6 +7,9 @@ const Admin = () => {
       <h1>Welcome to the Admin Page, Barry</h1>
       <div className="edit-file">
         <EditFile />
+      </div>
+      <div className="edit-about">
+        <EditAbout />
       </div>
     </div>
   )

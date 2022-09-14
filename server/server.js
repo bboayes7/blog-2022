@@ -10,6 +10,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.use('/api/skill', require('./routes/skillRoutes'))
 app.use('/api/post', require('./routes/postRoutes'))
 app.use('/api/file', require('./routes/fileRoutes'))
 

@@ -1,8 +1,11 @@
-import React from 'react'
+
 
 const EditAbout = () => {
   return (
-    <div>EditAbout</div>
+    <div>
+      <h1>Edit About Section</h1>
+      
+    </div>
   )
 }
 

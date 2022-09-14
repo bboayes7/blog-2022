@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
 const SkillSchema = mongoose.Schema({
-	title: {
+	name: {
+		type: String,
+		required: true,
+	},
+	type: {
 		type: String,
 		required: true,
 	},
