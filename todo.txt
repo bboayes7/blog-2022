@@ -58,7 +58,7 @@ SERVER SIDE
 
 
 
-9.13.22 9:49AM
+9.13.22 begin 9:49AM
 ---------------------------------------------------------------------------------
 - Complete fileupload dropzone
   CLIENT SIDE
@@ -66,21 +66,48 @@ SERVER SIDE
     	- implement react-dropzone into fileupload component
 	- implement axios.post http://localhost:5000/api/file
 	  - formdata
+    - FileDropzone.tsx
+	- implement 'react-dropzone'
+	- the onDrop method returns an array of acceptedFiles
+	- the the formData was not returning any file entries
+	- passed the first entry of accepted files into the formdata.append('file', file)
+	- now server can read the request
   SERVER SIDE
     - fileController.js	
-	- implement post fileupload controller
-	- use multer.js
-    - fileRouter.js
----------------------------------------------------------------------------------
+	- server was breaking when reading the req.file because the client side was sending arrays and not a single file (a setting in multer to upload a single file)
+
 - Complete fileupload get filelist
+	- filelist refreshes on upload
 - Complete fileupload download file from filelist 
+	- filelist downloads files from server
 - Complete fileupload delete file from filelist
+	- button that deletes files from server
 - Once complete put all fileupload components in one folder in /Admin/file
+	- refactor all methods into the File.tsx and distribute them among child components
+		- getlist -> filelist
+		- handlesubmit -> upload to server
 - Create File component that contains all fileupload 
   components and add it to Admin component
 
+finished 5:30PM
 
-
+9/13/2022 6:00PM
+- Expanding Admin edit components into
+	- Blog
+	- Skills
+	- Experience
+	- Projects
+- Skills CRUD
+	- create model
+	- create controller methods to persist to mongodb
+	- create route endpoints
+---------------------------------------------------------------------------------
+9/13/2022 6:25PM
+- EditSkills Admin components
+	- Add Skill
+	- Edit Skill
+	- List Skills by type["language", "tools", "frameworks", "database"]
+	- View Skills with icons (react icons?)
 
 
 

@@ -1,8 +1,11 @@
-import React from 'react'
+import SkillIcon from "./SkillIcon";
 
-const SkillListItem = () => {
+const SkillListItem = ({skill}) => {
   return (
-    <div>SkillListItem</div>
+    <div>
+      <p>{skill.name}</p>
+      <SkillIcon icon={skill.icon} />
+    </div>
   )
 }
 
