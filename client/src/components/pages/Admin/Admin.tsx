@@ -1,12 +1,11 @@
-import File from './File/File'
+import EditFile from './File/EditFile'
 
 const Admin = () => {
   return (
     <div>
       <h1>Welcome to the Admin Page, Barry</h1>
-      <div className="file-upload">
-        <h3>Upload your resume here:</h3>
-        <File />
+      <div className="edit-file">
+        <EditFile />
       </div>
     </div>
   )

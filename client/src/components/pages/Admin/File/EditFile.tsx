@@ -14,7 +14,6 @@ const File = () => {
     const getFiles = async () => {
         const { data } = await axios.get('http://localhost:5000/api/file')
         setFiles(data)
-        console.log(files)
     }
         
     const handleDelete = async (id: any) => {
@@ -26,7 +25,6 @@ const File = () => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('file', file)
-        console.log(formData)
         await axios.post('http://localhost:5000/api/file', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
