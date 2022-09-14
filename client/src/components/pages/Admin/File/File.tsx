@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import FileList from './FileList'
-import FileUpload from './FileUpload'
+import FileDropzone from './FileDropzone'
 
 const File = () => {
     const [files, setFiles] = useState<any>([])
-    const [file, setFile] = useState<any>(null)
     
     useEffect(() => {
         getFiles()
@@ -22,8 +21,10 @@ const File = () => {
         getFiles()
     }
     
-    const handleSubmit = async (e:any) => {
-        e.preventDefault()
+    const handleSubmit = async (file) => {
+        console.log('sup')
+        if (!file) return console.log('No file selected')
+
         const formData = new FormData()
         formData.append('file', file)
         console.log(formData)
@@ -39,14 +40,10 @@ const File = () => {
             console.log(err)
         });
     }
-    
-    const handleSetFile = (e: any) => {
-        setFile(e.target.files[0])
-    }
-    
+
     return (
         <div>
-          <FileUpload handleSetFile={handleSetFile} handleSubmit={handleSubmit} />
+            <FileDropzone  handleSubmit={handleSubmit} />
           <FileList files={files} handleDelete={handleDelete} />
         </div>
     )
