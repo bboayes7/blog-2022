@@ -101,14 +101,16 @@ finished 5:30PM
 	- create model
 	- create controller methods to persist to mongodb
 	- create route endpoints
----------------------------------------------------------------------------------
 9/13/2022 6:25PM
 - EditSkills Admin components
 	- Add Skill
 	- Edit Skill
 	- List Skills by type["language", "tools", "frameworks", "database"]
-	- View Skills with icons (react icons?)
-
+	- View Skills with name and icon
+	- implement react-icons with dynamic rendered icons 
+9/13/2022 7:33PM
+DONE
+---------------------------------------------------------------------------------
 
 
 
