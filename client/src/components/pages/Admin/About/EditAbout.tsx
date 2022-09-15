@@ -1,11 +1,14 @@
 import EditSkills from "./Skills/EditSkills"
-
+import { useState } from 'react'
 const EditAbout = () => {
+  const [toggleSkills, setToggleSkills] = useState(false)
+  
+
   return (
     <div>
       <h1>Edit About Section</h1>
-      <p>skills</p>
-      <EditSkills />
+      <button onClick={() => setToggleSkills(!toggleSkills)}>{toggleSkills ? 'Edit Skills' : 'Hide Edit Skills' }</button>
+      {toggleSkills && <EditSkills /> }
       <p>projects</p>
       {/* <EditProjects /> */}
       <p>experience</p>

@@ -7,6 +7,51 @@ const SkillsList = ({ skills, deleteSkill, editSkill }) => {
   const tools = skills.filter((skill) => skill.type === "tool")
 
   return (
+    <>
+      <table>
+        <tbody>
+          <tr>
+            <td>Language</td>
+              {languages.map((skill) => (
+                <td key={skill._id}>
+                  <SkillListItem skill={skill} deleteSkill={deleteSkill} editSkill={editSkill} />
+                </td>
+              ))}
+            </tr>
+          <tr>
+            <td>Frameworks</td>
+              {frameworks.map((skill) => (
+                <td key={skill._id}>
+                  <SkillListItem skill={skill} deleteSkill={deleteSkill} editSkill={editSkill} />
+                </td>
+              ))}
+            </tr>
+          <tr>
+            <td>Databases</td>
+              {databases.map((skill) => (
+                <td key={skill._id}>
+                  <SkillListItem skill={skill} deleteSkill={deleteSkill} editSkill={editSkill} />
+                </td>
+              ))}
+            </tr>
+          <tr>
+            <td>Tools</td>
+              {tools.map((skill) => (
+                <td key={skill._id}>
+                  <SkillListItem skill={skill} deleteSkill={deleteSkill} editSkill={editSkill} />
+                </td>
+              ))}
+            </tr>
+        </tbody>
+      </table>
+    </>
+  )
+}
+
+export default SkillsList
+
+
+/*
     <div>
       <table>
         <thead>
@@ -50,8 +95,4 @@ const SkillsList = ({ skills, deleteSkill, editSkill }) => {
           </tr>
         </tbody>
       </table>
-    </div>
-  )
-}
-
-export default SkillsList
+    </div> */

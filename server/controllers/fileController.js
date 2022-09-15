@@ -5,7 +5,7 @@ const fs = require('fs')
 const multer = require('multer')
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, '../public/docs/')
+		cb(null, './public/docs/')
 	},
 	filename: function (req, file, cb) {
 		const uniqueSuffix = new Date(Date.now()).getFullYear()
@@ -22,6 +22,7 @@ exports.uploadFile = async (req, res) => {
 	try {
 		let location,
 			filename = ''
+
 		await upload(req, res, function (err) {
 			location = req.file.path
 			filename = req.file.filename

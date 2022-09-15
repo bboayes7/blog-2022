@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const ProjectSchema = mongoose.Schema({
-	title: {
+	name: {
 		type: String,
 		required: true,
 	},
@@ -9,8 +9,12 @@ const ProjectSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	image: {
-		type: String,
+	screenshots: {
+		type: [String],
+		required: true,
+	},
+	technologies: {
+		type: [String],
 		required: true,
 	},
 	link: {
@@ -20,11 +24,7 @@ const ProjectSchema = mongoose.Schema({
 	github: {
 		type: String,
 		required: true,
-	},
-	tags: {
-		type: Array,
-		required: true,
-	},
+	}
 })
 
 module.exports = mongoose.model('Project', ProjectSchema)

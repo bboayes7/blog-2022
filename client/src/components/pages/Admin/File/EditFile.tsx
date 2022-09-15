@@ -39,6 +39,7 @@ const File = () => {
     }
     
     const handleSetFile = (e: any) => {
+        console.log('setfile', e.target.files[0])
         setFile(e.target.files[0])
     }
     

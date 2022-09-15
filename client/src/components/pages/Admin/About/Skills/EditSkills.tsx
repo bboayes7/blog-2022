@@ -18,10 +18,10 @@ const EditSkills = () => {
   }
   
   const addSkill = async (skill) => {
-    console.log('hi from add skill')
     const newSkill = { name: skill.name, icon: skill.icon, type: skill.type }
     await axios.post('http://localhost:5000/api/skill', newSkill)
       .then(res => {
+
         getSkills()
       })
       .catch(err => {
@@ -36,13 +36,11 @@ const EditSkills = () => {
   }
 
   const editSkill = async (editedSkill) => {
-    console.log('hi from edit skill')
     setEditMode(true)
     setSkill(editedSkill)
   }
 
   const updateSkill = async (skill) => {
-    console.log('hi from update skill')
     await axios.put(`http://localhost:5000/api/skill/${skill.id}`, skill)
       .then(res => {
         setEditMode(false)
@@ -57,7 +55,7 @@ const EditSkills = () => {
 
     return (
       <div>
-        <p>Edit Skills</p>
+        <p>{editMode ? 'Edit Skill' : 'Add Skill'}</p>
         {editMode ? <SkillForm addSkill={updateSkill} skill={skill} /> : <SkillForm addSkill={addSkill} skill={{}} />}
         <SkillsList skills={skills} editSkill={editSkill} deleteSkill={deleteSkill} />
       </div>

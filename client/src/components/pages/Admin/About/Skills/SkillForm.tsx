@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import SkillIcon from './SkillIcon'
 
 const SkillForm = ({ addSkill, skill }) => {
-  const [name, setName] = useState('')
-  const [icon, setIcon] = useState('')
-  const [type, setType] = useState('')
+  const [name, setName] = useState(skill.name)
+  const [icon, setIcon] = useState(skill.icon)
+  const [type, setType] = useState(skill.type)
 
   useEffect(() => {
     setName(skill.name)
@@ -22,6 +22,7 @@ const SkillForm = ({ addSkill, skill }) => {
     } else {
       console.log('no skill')
     }
+
     setName('')
     setIcon('')
     setType('')
@@ -29,7 +30,6 @@ const SkillForm = ({ addSkill, skill }) => {
   
   return (
     <div>
-      <h1>Add Skill</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
