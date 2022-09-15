@@ -1,14 +1,16 @@
-import * as Icons from "react-icons/fa";
+import * as Di from "react-icons/di";
+import * as Fa from "react-icons/fa";
+import * as Si from "react-icons/si";
 
 /* Your icon name from database data can now be passed as prop */
 const SkillIcon = ({ icon }) => {
-  const IconComponent = Icons[icon]
+  const Icon = Di[icon] || Fa[icon] || Si[icon];
 
-  if (!IconComponent) { // Return a default one
-    return <Icons.FaTerminal />
+  if (!Icon) { // Return a default one
+    return <Di.DiCode />
   }
 
-  return <IconComponent />
+  return <Icon />
 };
 
 export default SkillIcon
