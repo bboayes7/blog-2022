@@ -6,8 +6,8 @@ import axios from 'axios'
 
 
 const EditProjects = () => {
-    const [projects, setProjects] = useState([])
-    const [project, setProject] = useState({_id: '', name: '', description: '', screenshots: [], technologies: [], link: '', github: ''})
+    const [projects, setProjects] = useState([]) 
+    const [project, setProject] = useState({})
     const [editMode, setEditMode] = useState(false)
 
     useEffect(() => {
@@ -24,12 +24,7 @@ const EditProjects = () => {
       <div>
           <h1>Edit Projects</h1>
           <ProjectForm />
-          <>
-              {projects.length > 0 ? 
-                  projects.map(project => (
-                      <ProjectListItem project={project} />
-                    )) : <p>No projects</p>}
-          </>
+          <ProjectList projects={projects} />
     </div>
   )
 }

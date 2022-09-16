@@ -1,10 +1,10 @@
 import ProjectListItem from "./ProjectListItem"
 
-const ProjectList = ({ projectList }) => {
+const ProjectList = ({ projects }) => {
 
   return (
       <div>
-          {projectList.map((project) => (
+          {projects.map((project) => (
               <div key={project._id}>
                   <ProjectListItem project={project} />
               </div>
