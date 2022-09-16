@@ -1,8 +1,15 @@
-import React from 'react'
+import ProjectListItem from "./ProjectListItem"
 
-const ProjectList = () => {
+const ProjectList = ({ projectList }) => {
+
   return (
-    <div>ProjectList</div>
+      <div>
+          {projectList.map((project) => (
+              <div key={project._id}>
+                  <ProjectListItem project={project} />
+              </div>
+          ))}
+    </div>
   )
 }
 
