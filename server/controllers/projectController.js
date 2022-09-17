@@ -88,6 +88,7 @@ const createProject = async (req, res) => {
 		// })
 		await upload(req, res, function (err) {
 			const screenshots = req.files.map((file) => file.filename)
+			console.log('hi from upload', screenshots)
 			const project = new Project({
 				name: req.body.name,
 				description: req.body.description,
@@ -96,7 +97,6 @@ const createProject = async (req, res) => {
 				link: req.body.link,
 				github: req.body.github,
 			})
-
 			Project.create(project)
 			res.status(200).json(project)
 			if (err instanceof multer.MulterError) {

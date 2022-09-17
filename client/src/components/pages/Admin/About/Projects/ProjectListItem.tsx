@@ -4,10 +4,7 @@ import { useState, useEffect } from 'react'
 
 
 const ProjectListItem = ({ project }) => {
-    const [pic, setPic] = useState('')
-    useEffect(() => {
-        setPic(URL.createObjectURL(project.screenshots[0]))
-    }, [])
+    const pic = `http://localhost:5000/img/${project.screenshots[0]}`
 
   return (
       <Card style={{ width: '18rem' }} border='primary'>
