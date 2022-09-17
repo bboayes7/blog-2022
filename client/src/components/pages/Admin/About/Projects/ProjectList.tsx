@@ -1,15 +1,15 @@
 import ProjectListItem from "./ProjectListItem"
-
+import CardGroup from 'react-bootstrap/CardGroup'
 const ProjectList = ({ projects }) => {
 
   return (
-      <div>
+      <CardGroup>
           {projects.map((project) => (
               <div key={project._id}>
                   <ProjectListItem project={project} />
               </div>
           ))}
-    </div>
+        </CardGroup>
   )
 }
 

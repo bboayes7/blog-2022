@@ -1,10 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useState, useEffect } from 'react'
 
-const ProjectListItem = ({ project}) => {
+
+const ProjectListItem = ({ project }) => {
+    const [pic, setPic] = useState('')
+    useEffect(() => {
+        setPic(URL.createObjectURL(project.screenshots[0]))
+    }, [])
+
   return (
-      <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={project.screenshots[0]} />
+      <Card style={{ width: '18rem' }} border='primary'>
+          <Card.Img variant="top" src={pic} />
           <Card.Body>
               <Card.Title>{project.name}</Card.Title>
               <Card.Text>
