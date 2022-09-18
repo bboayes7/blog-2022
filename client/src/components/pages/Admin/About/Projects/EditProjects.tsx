@@ -39,13 +39,16 @@ const EditProjects = () => {
     }
 
     const updateProject = async (projectForm) => {
-        await axios.put(`http://localhost:5000/api/project/${projectForm.id}`, projectForm, {
+        console.log('updateProject', projectForm)
+        
+        await axios.put(`http://localhost:5000/api/project/${projectForm.get('id')}`, projectForm, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
             .then((res) => {
-                if (res.status === 200) getProjects()
+                getProjects()
+                setEditMode(false)
             })
             .catch((err) => {
                 console.log(err)

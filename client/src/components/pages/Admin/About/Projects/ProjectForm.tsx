@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react'
+import { isAssertEntry } from 'typescript'
 
 const ProjectForm = ({ project, handleSubmit }) => {
   const [name, setName] = useState(project.name)
   const [description, setDescription] = useState(project.description)
-  const [screenshots, setScreenshots] = useState<any>(null)
   const [technologies, setTechnologies] = useState(project.technologies)
   const [link, setLink] = useState(project.link)
   const [github, setGithub] = useState(project.github)
-
+  const [id , setId] = useState(project._id)
   useEffect(() => {
     setName(project.name)
     setDescription(project.description)
-    setScreenshots(project.screenshots)
     setTechnologies(project.technologies)
     setLink(project.link)
     setGithub(project.github)
@@ -20,12 +19,17 @@ const ProjectForm = ({ project, handleSubmit }) => {
   const submitProject = (e) => {
     e.preventDefault()
     const formData = new FormData()
+    if (project._id) {
+      console.log(project._id)
+      formData.append('id', project._id)
+    }
     formData.append('screenshots', e.target.screenshots.files[0])
     formData.append('name', name)
     formData.append('description', description)
     formData.append('technologies', technologies)
     formData.append('link', link)
     formData.append('github', github)
+    
     if (formData) {
       handleSubmit(formData)
     } else {
@@ -33,7 +37,6 @@ const ProjectForm = ({ project, handleSubmit }) => {
     }
     setName('')
     setDescription('')
-    setScreenshots('')
     setTechnologies('')
     setLink('')
     setGithub('')

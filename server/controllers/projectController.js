@@ -114,37 +114,61 @@ const createProject = async (req, res) => {
 }
 
 // @desc    Update a project
-// @route   PUT /api/projects/:id
+// @route   PUT /api/project/:id
 // @access  Private/Admin
 const updateProject = async (req, res) => {
 	try {
-		const { name, description, screenshots, technologies, link, github } =
-			req.body
-
-		const project = await Project.findById(req.params.id)
-
-		if (project) {
-			project.name = name
-			project.description = description
-			project.screenshots = screenshots
-			project.technologies = technologies
-			project.link = link
-			project.github = github
-			const updatedProject = await Project.findByIdAndUpdate(
-				req.params.id,
-				{ $set: project },
-				{ new: true }
-			)
-			res.json(updatedProject)
-		} else {
-			res.status(404)
-			throw new Error('Project not found')
-		}
+		let project = await Project.findById(req.params.id)
+		await upload(req, res, function (err) {
+			if (project) {
+				const screenshots = req.files.map((file) => file.filename)
+				console.log('hi from upload', req.params.id)
+				project = {
+					name: req.body.name,
+					description: req.body.description,
+					screenshots: screenshots,
+					technologies: req.body.technologies,
+					link: req.body.link,
+					github: req.body.github,
+				}
+				console.log('newproject', project)
+				const updatedProject = updateProjectToMongo(project, req.params.id)
+				res.status(200).json(updatedProject)
+				if (err instanceof multer.MulterError) {
+					// A Multer error occurred when uploading.
+					console.log('multer error', err)
+				} else if (err) {
+					// An unknown error occurred when uploading.
+					console.log('unknown error', err)
+				}
+			} else {
+				res.status(404)
+				throw new Error('Project not found')
+			}
+		})
 	} catch (error) {
 		console.error(error)
 		res.status(500).json({ message: 'Server Error' })
 	}
 }
+
+const updateProjectToMongo = async (project, id) => {
+	try {
+		const updatedProject = await Project.findByIdAndUpdate(
+			id,
+			project,
+			{
+				new: true,
+				runValidators: true,
+			}
+		)
+		return updatedProject
+	} catch (error) {
+		console.error(error)
+		res.status(500).json({ message: 'Server Error' })
+	}
+}
+
 
 module.exports = {
 	getProjects,
@@ -153,3 +177,43 @@ module.exports = {
 	createProject,
 	updateProject,
 }
+
+// try {
+
+// 	await upload(req, res, function (err) {
+// 	const project =  Project.findById(req.params.id)
+
+// 	if (project) {
+// 		const screenshots = req.files.map((file) => file.filename)
+// 		console.log('hi from upload', screenshots)
+// 		const newproject = new Project({
+// 			name: req.body.name,
+// 			description: req.body.description,
+// 			screenshots: screenshots,
+// 			technologies: req.body.technologies,
+// 			link: req.body.link,
+// 			github: req.body.github,
+// 		})
+// 		const updatedProject = Project.findByIdAndUpdate(
+// 			req.params.id,
+// 			{ $set: newProject },
+// 			{ new: true }
+// 			)
+// 		res.status(200).json(updatedProject)
+// 		if (err instanceof multer.MulterError) {
+// 			// A Multer error occurred when uploading.
+// 			console.log('multer error', err)
+// 		} else if (err) {
+// 			// An unknown error occurred when uploading.
+// 			console.log('unknown error', err)
+// 		}
+// 	} else {
+// 		res.status(404)
+// 		throw new Error('Project not found')
+// 		}
+
+// 	})
+// } catch (error) {
+// 	console.error(error)
+// 	res.status(500).json({ message: 'Server Error' })
+// }
