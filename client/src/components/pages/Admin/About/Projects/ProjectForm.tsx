@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { isAssertEntry } from 'typescript'
 
 const ProjectForm = ({ project, handleSubmit }) => {
   const [name, setName] = useState(project.name)
@@ -7,7 +6,7 @@ const ProjectForm = ({ project, handleSubmit }) => {
   const [technologies, setTechnologies] = useState(project.technologies)
   const [link, setLink] = useState(project.link)
   const [github, setGithub] = useState(project.github)
-  const [id , setId] = useState(project._id)
+  
   useEffect(() => {
     setName(project.name)
     setDescription(project.description)
