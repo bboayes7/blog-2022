@@ -14,3 +14,5 @@ router.get('/:id', getLandingContentById)
 router.post('/', createLandingContent)
 router.put('/:id', updateLandingContent)
 router.delete('/:id', deleteLandingContent)
+
+module.exports = router
