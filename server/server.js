@@ -18,5 +18,7 @@ app.use('/api/file', require('./routes/fileRoutes'))
 app.use('/api/skill', require('./routes/skillRoutes'))
 app.use('/api/post', require('./routes/postRoutes'))
 app.use('/api/project', require('./routes/projectRoutes'))
+app.use('/api/experience', require('./routes/experienceRoutes'))
+app.use('/api/landing', require('./routes/landingRoutes'))
 
 app.listen(port, () => console.log(`Server running on port ${port}`))
