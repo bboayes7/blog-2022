@@ -11,11 +11,11 @@ const EditAbout = () => {
     <div>
       <h1>Edit About Section</h1>
       <button onClick={() => setToggleSkills(!toggleSkills)}>{toggleSkills ? 'Hide Skills' : 'Edit Skills' }</button>
+      <button onClick={() => setToggleProjects(!toggleProjects)}>{toggleProjects ? 'Hide Projects' : 'Edit Projects' }</button>
+      <button onClick={() => setToggleExperience(!toggleExperience)}>{toggleExperience ? 'Hide Experience' : 'Edit Experience' }</button>
       {toggleSkills && <EditSkills /> }
       
-      <button onClick={() => setToggleProjects(!toggleProjects)}>{toggleProjects ? 'Hide Projects' : 'Edit Projects' }</button>
       {toggleProjects && <EditProjects />}
-      <button onClick={() => setToggleExperience(!toggleExperience)}>{toggleExperience ? 'Hide Experience' : 'Edit Experience' }</button>
       {toggleExperience && <EditExperience />}
     </div>
   )
